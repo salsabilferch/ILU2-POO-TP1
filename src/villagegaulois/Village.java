@@ -8,10 +8,12 @@ public class Village {
 	private Chef chef;
 	private Gaulois[] villageois;
 	private int nbVillageois = 0;
+	private Marche marche;
 
-	public Village(String nom, int nbVillageoisMaximum) {
+	public Village(String nom, int nbVillageoisMaximum,int nbEtals) {
 		this.nom = nom;
 		villageois = new Gaulois[nbVillageoisMaximum];
+		marche = new Marche(nbEtals);
 	}
 
 	public String getNom() {
@@ -21,6 +23,18 @@ public class Village {
 	public void setChef(Chef chef) {
 		this.chef = chef;
 	}
+	public static class Marche {
+		private Etal[] etals;
+		
+		private Marche(int nbEtals) {
+			etals = new Etal[nbEtals];
+		}
+		
+		private void utiliserEtal(int indiceEtal,Gaulois vendeur,String produit,int nbProduit) {
+			if(indiceEtal < 0 && indiceEtal > etals.length) {	
+			}
+			etals[indiceEtal].occuperEtal(vendeur, produit, nbProduit);
+		}
 
 	public void ajouterHabitant(Gaulois gaulois) {
 		if (nbVillageois < villageois.length) {
